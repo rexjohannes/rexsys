@@ -1,0 +1,23 @@
+name: rexsys
+author: rexjohannes98
+version: 1.0
+main: de.pattyxdhd.feed.FeedPlugin
+
+commands:
+  feed:
+  fly:
+  heal:
+  gm:
+  invsee:
+  msg:
+  tp:
+  top:
+  rtp:
+  kick:
+  mutechat:
+  mutep:
+  sudo:
+  ping:
+  rename:
+  slowchat:
+  rex:
