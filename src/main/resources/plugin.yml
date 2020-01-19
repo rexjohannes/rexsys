@@ -8,6 +8,8 @@ commands:
   fly:
   heal:
   gm:
+    aliases:
+      - gamemode
   invsee:
   msg:
   tp:
@@ -21,3 +23,12 @@ commands:
   rename:
   slowchat:
   rex:
+  clearchat:
+    aliases:
+      - cc
+  enderchest:
+    aliases:
+      - ec
+  generate:
+  vanish:
+  feuerwerk:

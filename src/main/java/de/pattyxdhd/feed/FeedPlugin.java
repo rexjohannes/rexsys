@@ -7,6 +7,8 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public class FeedPlugin extends JavaPlugin {
 
+    public static FeedPlugin instace;
+
     @Getter
     private static FeedPlugin instance;
 
@@ -46,6 +48,11 @@ public class FeedPlugin extends JavaPlugin {
         getCommand("sudo").setExecutor(new SudoCommand());
         getCommand("slowchat").setExecutor(new SlowchatCommand());
         getCommand("rex").setExecutor(new RexSysCommand());
+        getCommand("clearchat").setExecutor(new ClearChatCommand());
+        getCommand("enderchest").setExecutor(new EnderChestCommand());
+        getCommand("generate").setExecutor(new GenerateCommand());
+        getCommand("feuerwerk").setExecutor(new FeuerWerkCommand());
+        getCommand("vanish").setExecutor(new VanishCommand());
     }
 
     private void loadListener(final PluginManager pluginManager){
@@ -62,12 +69,15 @@ public class FeedPlugin extends JavaPlugin {
     }
 
 
-    public static String convertSekToMin(final Integer seconds){
-        if(seconds >= 60){
-            double minutes = seconds*0.0166667;
+    public static String convertSekToMin(final Integer seconds)
+    {
+        if (seconds >= 60)
+        {
+            double minutes = seconds * 0.0166667;
             minutes = Math.round(minutes);
-            return (int)minutes + " Minuten";
-        }else{
+            return (int) minutes + " Minuten";
+        } else
+        {
             return seconds + " Sekunden";
         }
     }
