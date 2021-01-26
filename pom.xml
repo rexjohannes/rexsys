@@ -1,37 +1,102 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"	
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"	
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">	
-    <modelVersion>4.0.0</modelVersion>
-    <groupId>de.pattyxdhd</groupId>
-    <artifactId>feedplugin</artifactId>
-    <version>1.0</version>
-   
-    <dependencies>
-        <dependency>
-            <groupId>org.bukkit</groupId>
-            <artifactId>bukkit</artifactId>
-            <version>1.8.8-R0.1-SNAPSHOT</version>
-            <scope>provided</scope> <!-- This means don't put bukkit in the plugin because it is on the server -->
-        </dependency>
-                  <dependency>
-            <groupId>org.spigotmc</groupId>
-            <artifactId>spigot-api</artifactId>
-            <version>1.8.8-R0.1-SNAPSHOT</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <version>1.18.0</version>
-            <scope>provided</scope>
-        </dependency>
-    </dependencies>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
 
-    <repositories>
-        <repository>
-            <id>techcable-repo</id> <!-- Just leave the repositories section alone or bukkit won't work -->
-            <url>http://repo.techcable.net/content/groups/public/<id>
-        </repository>
-    </repositories>
+	<groupId>de.pattyxdhd</groupId>
+	<artifactId>feedplugin</artifactId>
+	<version>1.0</version>
+	<packaging>jar</packaging>
+
+	<name>RexSys</name>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+	<repositories>
+		<!--Spigot Repo -->
+		<repository>
+			<id>spigot-repo</id>
+			<url>https://hub.spigotmc.org/nexus/content/repositories/snapshots/</url>
+		</repository>
+		<!--Bungeecord Repo -->
+		<repository>
+			<id>bungeecord-repo</id>
+			<url>https://oss.sonatype.org/content/repositories/snapshots</url>
+		</repository>
+	</repositories>
+	<dependencies>
+		<!--Spigot API -->
+		<dependency>
+			<groupId>org.spigotmc</groupId>
+			<artifactId>spigot-api</artifactId>
+			<version>1.8.8-R0.1-SNAPSHOT</version>
+			<scope>provided</scope>
+		</dependency>
+		<!--Spigot Annotation Processor -->
+		<dependency>
+			<groupId>org.spigotmc</groupId>
+			<artifactId>plugin-annotations</artifactId>
+			<version>1.2.2-SNAPSHOT</version>
+			<scope>provided</scope>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/junit/junit -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.13.1</version>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+	<build>
+		<sourceDirectory>src/main/java</sourceDirectory>
+		<resources>
+			<resource>
+				<directory>./</directory>
+				<includes>
+					<include>**/config.yml</include>
+					<include>**/plugin.yml</include>
+				</includes>
+
+				<excludes>
+					<exclude>**/target/**</exclude>
+				</excludes>
+			</resource>
+		</resources>
+		<plugins>
+			<plugin>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>single</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<annotationProcessorPaths>
+						<path>
+							<groupId>org.spigotmc</groupId>
+							<artifactId>plugin-annotations</artifactId>
+							<version>1.2.2-SNAPSHOT</version>
+						</path>
+					</annotationProcessorPaths>
+					<descriptorRefs>
+						<descriptorRef>jar-with-dependencies</descriptorRef>
+					</descriptorRefs>
+					<appendAssemblyId>false</appendAssemblyId>
+					<finalName>${project.name}-${project.version}</finalName>
+				</configuration>
+			</plugin>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.7.0</version>
+				<configuration>
+					<source>1.8</source>
+					<target>1.8</target>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
 </project>
