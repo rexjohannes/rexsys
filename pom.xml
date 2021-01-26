@@ -1,29 +1,22 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project>
     <modelVersion>4.0.0</modelVersion>
-
     <groupId>de.pattyxdhd</groupId>
     <artifactId>feedplugin</artifactId>
-    <version>1.0-SNAPSHOT</version>
-
-    <repositories>
-        <repository>
-            <id>spigot-repo</id>
-            <url>https://hub.spigotmc.org/nexus/content/repositories/snapshots/</url>
-        </repository>
-    </repositories>
-
+    <version>1.0</version>
+   
     <dependencies>
-        <!-- Spigot API-->
         <dependency>
+            <groupId>org.bukkit</groupId>
+            <artifactId>bukkit</artifactId>
+            <version>1.8.8-R0.1-SNAPSHOT</version>
+            <scope>provided</scope> <!-- This means don't put bukkit in the plugin because it is on the server -->
+        </dependency>
+                  <dependency>
             <groupId>org.spigotmc</groupId>
             <artifactId>spigot-api</artifactId>
             <version>1.8.8-R0.1-SNAPSHOT</version>
             <scope>provided</scope>
         </dependency>
-        <!-- Lombok -->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
@@ -32,4 +25,10 @@
         </dependency>
     </dependencies>
 
+    <repositories>
+        <repository>
+            <id>techcable-repo</id> <!-- Just leave the repositories section alone or bukkit won't work -->
+            <url>http://repo.techcable.net/content/groups/public/<id>
+        </repository>
+    </repositories>
 </project>
